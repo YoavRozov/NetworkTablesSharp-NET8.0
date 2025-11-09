@@ -54,6 +54,13 @@ namespace NetworkTablesSharp
             _queuedPublishes.TryAdd(topic, (type, properties));
         }
 
+
+        public void PublishTopic(string tablePath, string key, string type, Dictionary<string, object>? properties = null)
+        {
+            GetTable(tablePath).PublishTopic(key, type, properties);
+        }
+
+
         /// <summary>
         /// Publish a value to a topic
         /// </summary>
@@ -65,6 +72,11 @@ namespace NetworkTablesSharp
             {
                 Client.PublishValue(topic, value);
             }
+        }
+
+        public void PublishValue(string tablePath, string key, object value)
+        {
+            GetTable(tablePath).PublishValue(key, value);
         }
 
         /// <summary>
@@ -82,6 +94,11 @@ namespace NetworkTablesSharp
                 Client.Subscribe(topic, period, all, topicsOnly, prefix);
             }
             _queuedSubscribes.TryAdd(topic, new Nt4SubscriptionOptions(period, all, topicsOnly, prefix));
+        }
+
+        public void Subscribe(string tablePath, string key, double period = 0.1, bool all = false, bool topicsOnly = false, bool prefix = false)
+        {
+            GetTable(tablePath).Subscribe(key, period, all, topicsOnly, prefix);
         }
 
         /// <summary>
@@ -113,6 +130,11 @@ namespace NetworkTablesSharp
             }
 
             return default;
+        }
+
+        public Nt4Table GetTable(string tablePath)
+        {
+            return new Nt4Table(this, tablePath);
         }
 
         /// <summary>

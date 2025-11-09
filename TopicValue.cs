@@ -18,7 +18,7 @@ namespace NetworkTablesSharp
             return _latestValue;
         }
         
-        public T GetValue(long timestamp)
+        public T? GetValue(long timestamp)
         {
             if (_timestampedValues.ContainsKey(timestamp))
             {
