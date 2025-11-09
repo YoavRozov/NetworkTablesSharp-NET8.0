@@ -89,7 +89,7 @@ namespace NetworkTablesSharp
         /// </summary>
         /// <param name="key">The topic to get the value of</param>
         /// <returns>The latest value of the topic, or default if it doesn't exist</returns>
-        public T GetValue<T>(string key)
+        public T? GetValue<T>(string key)
         {
             if (_values.TryGetValue(key, out var value))
             {
@@ -105,7 +105,7 @@ namespace NetworkTablesSharp
         /// <param name="key">The topic to get the value of</param>
         /// <param name="timestamp">The timestamp to get the value at</param>
         /// <returns>The most recent value before or at the given timestamp, or default if it doesn't exist</returns>
-        public T GetValue<T>(string key, long timestamp)
+        public T? GetValue<T>(string key, long timestamp)
         {
             if (_values.TryGetValue(key, out var value))
             {

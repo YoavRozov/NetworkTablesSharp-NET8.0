@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <RootNamespace>NetworkTablesSharp</RootNamespace>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -19,11 +19,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MessagePack" Version="3.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="WebSocketSharp-netstandard" Version="1.0.1" />
+		<PackageReference Include="MessagePack" Version="2.*" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.*" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="LICENSE">
       <Pack>True</Pack>
